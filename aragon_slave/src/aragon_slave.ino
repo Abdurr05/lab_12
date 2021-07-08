@@ -26,12 +26,15 @@ SPI1.begin(SPI_MODE_SLAVE, D6);
 void loop() {
   if(CS == true){
     SPI1.transfer(tx, rx, 1, NULL);
+    // if master enters 1 turn on the led
     if (rx[0] == '1'){
       digitalWrite(D5,HIGH);
     }
+    // if master enters 0 turn off the led
     if(rx[0] == '0'){
       digitalWrite(D5,LOW);
     }
+    // if master enters ? return 1 if the button is pressed and return 0 if the button isn't pressed
     if(rx[0] == '?'){
       if(digitalRead(D7)== 1){
         tx[0] = '1';
@@ -41,9 +44,7 @@ void loop() {
     }
     CS = false;
   }
-  // if (rx == '1'){
-  //   digitalWrite(D5,HIGH);
-  // }
+
 
   
 

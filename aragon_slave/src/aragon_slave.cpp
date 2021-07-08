@@ -36,6 +36,7 @@ SPI1.begin(SPI_MODE_SLAVE, D6);
 void loop() {
   if(CS == true){
     SPI1.transfer(tx, rx, 1, NULL);
+    tx[0] = NULL;
     if (rx[0] == '1'){
       digitalWrite(D5,HIGH);
     }

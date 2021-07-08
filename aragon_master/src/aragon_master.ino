@@ -25,12 +25,12 @@ SPI.begin(SPI_MODE_MASTER, D5);
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
   value = Serial.read();
-  tx[0] = value;
+  tx[0] = value; // send to slave what the user entered
   digitalWrite(D5, LOW);
   SPI.transfer(tx, rx, 1, NULL);
   digitalWrite(D5, HIGH);
   if(value == '?'){
-    Serial.println(rx[0]);
+    Serial.println(rx[0]); // if user enterd ? return data from the slave
   }
   // The core of your code will likely live here.
 
