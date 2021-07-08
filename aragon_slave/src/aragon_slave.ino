@@ -11,13 +11,13 @@ void takeAction(uint8_t state) {
 
 void setup() {
   Serial.begin(9600);
-pinMode(D5,OUTPUT);
-pinMode(D7,INPUT);
+  pinMode(D5, OUTPUT);
+  pinMode(D7, INPUT);
 
-SPI1.setBitOrder(MSBFIRST);
-SPI1.setDataMode(SPI_MODE0);
-SPI1.onSelect(takeAction);
-SPI1.begin(SPI_MODE_SLAVE, D6);
+  SPI1.setBitOrder(MSBFIRST);
+  SPI1.setDataMode(SPI_MODE0);
+  SPI1.onSelect(takeAction);
+  SPI1.begin(SPI_MODE_SLAVE, D6);
   // Put initialization like pinMode and begin functions here.
 
 }
